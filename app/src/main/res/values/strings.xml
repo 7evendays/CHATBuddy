@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">chatbuddy</string>
+    <string name="web_client_id">312507382741-17g60eak7mdgetogatlg0fc6aak8i97c.apps.googleusercontent.com</string>
+    <string name="signOut">로그아웃</string>
+</resources>
