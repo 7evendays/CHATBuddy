@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="30dp"
     android:orientation="vertical"
-    android:background="#292C33"
+    android:background="@color/main_darkGray"
     tools:context=".SettingsActivity">
 
     <ImageButton
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:text="계정관리"
         android:textSize="22sp"
-        android:textColor="#D9D9D9"
+        android:textColor="@color/text_lightGray"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"/>
 
@@ -46,6 +46,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"/>
 
+    <!--
     <ImageView
         android:id="@+id/userPhoto"
         android:layout_width="100sp"
@@ -71,7 +72,6 @@
         android:textColor="@color/white"
         android:textSize="16sp" />
 
-    <!--
     <TextView
         android:id="@+id/nickName"
         android:layout_width="wrap_content"
@@ -154,6 +154,8 @@
 
         </LinearLayout>
 
+
+
         <LinearLayout
             android:id="@+id/btnPasswd"
             android:layout_width="match_parent"
@@ -161,6 +163,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvPasswd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="비밀번호 : 끄기"

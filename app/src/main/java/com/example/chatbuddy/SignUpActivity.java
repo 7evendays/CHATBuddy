@@ -1,30 +1,31 @@
 package com.example.chatbuddy;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.accounts.AccountManager;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.identity.Identity;
-import com.google.android.gms.auth.api.identity.SignInClient;
-import com.google.android.gms.auth.api.identity.SignInCredential;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -40,10 +41,12 @@ import com.google.firebase.firestore.auth.User;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    ImageButton btnBack;
-    Button btnSignUp;
+    private ImageButton btnBack;
     private TextView txtGuide, txtBirth, txtGender;
-    private EditText edtText, edtNick, edtBirth, edtGender;
+    private EditText edtNick, edtBirth, edtGender;
+    private Button btnSignUp;
+    DatePickerDialog datePickerDialog;
+    Dialog dGender;
 
     GoogleSignInOptions gso;
 
@@ -55,7 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     // realtime database
     FirebaseDatabase database;
-    DatabaseReference myRef;
+    DatabaseReference userRef;
     User user;
 
 
@@ -88,14 +91,12 @@ public class SignUpActivity extends AppCompatActivity {
 
         // Write a message to the database
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("users");
+        userRef = database.getReference("users");
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), FirstActivity.class);
-                startActivity(intent);
-                finish();
+                startSignInActivity();
             }
         });
 
@@ -113,12 +114,13 @@ public class SignUpActivity extends AppCompatActivity {
                 birth = edtBirth.getText().toString(),
                 gender = edtGender.getText().toString();
 
-        myRef.child(currentUser.getUid()).child("email").setValue(currentUser.getEmail());
-        myRef.child(currentUser.getUid()).child("name").setValue(currentUser.getDisplayName());
-        myRef.child(currentUser.getUid()).child("photo").setValue(currentUser.getPhotoUrl().toString());
-        myRef.child(currentUser.getUid()).child("nickName").setValue(nickName);
-        myRef.child(currentUser.getUid()).child("birth").setValue(birth);
-        myRef.child(currentUser.getUid()).child("gender").setValue(gender);
+        userRef.child(currentUser.getUid()).child("email").setValue(currentUser.getEmail());
+        userRef.child(currentUser.getUid()).child("name").setValue(currentUser.getDisplayName());
+        userRef.child(currentUser.getUid()).child("photo").setValue(currentUser.getPhotoUrl().toString());
+        userRef.child(currentUser.getUid()).child("nickName").setValue(nickName);
+        userRef.child(currentUser.getUid()).child("birth").setValue(birth);
+        userRef.child(currentUser.getUid()).child("gender").setValue(gender);
+        userRef.child(currentUser.getUid()).child("password").child("on").setValue(false);
     }
 
 
@@ -151,6 +153,7 @@ public class SignUpActivity extends AppCompatActivity {
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d("TAG", "firebaseAuthWithGoogle:" + acct.getId());
 
+        // 해당 값이 존재하는 경우 처리
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -162,29 +165,29 @@ public class SignUpActivity extends AppCompatActivity {
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
 
                             if (firebaseUser != null) {
-                                startMainActivity();
                                 Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
+                                startMainActivity();
                             }
                         } else {
                             // 로그인 실패 시
                             Log.w("TAG", "signInWithCredential:failure", task.getException());
                             Toast.makeText(getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT).show();
-                            startFirstActivity();
+
                         }
                     }
                 });
     }
 
-    private void startFirstActivity() {
-        Intent intent = new Intent(getApplicationContext(), FirstActivity.class);
+    private void startSignInActivity() {
+        finishAffinity();
+        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
         startActivity(intent);
-        finish();
     }
 
     private void startMainActivity() {
+        finishAffinity();
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
-        finish();
     }
 
     @Override
@@ -216,6 +219,13 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+        edtBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment dialogFragment = new DatePickerFragment(edtBirth);
+                dialogFragment.show(getSupportFragmentManager(), "datePicker");
+            }
+        });
 
         edtBirth.addTextChangedListener(new TextWatcher() {
             @Override
@@ -227,7 +237,6 @@ public class SignUpActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
-
             @Override
             public void afterTextChanged(Editable editable) {
                 if (editable.length() > 0) {
@@ -242,6 +251,13 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+        edtGender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showGenderDialog(edtGender);
+            }
+        });
+
         edtGender.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -252,7 +268,6 @@ public class SignUpActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
-
             @Override
             public void afterTextChanged(Editable editable) {
                 if (editable.length() > 0) {
@@ -264,6 +279,34 @@ public class SignUpActivity extends AppCompatActivity {
 //                    btnSignin.setBackgroundColor(Color.parseColor("#292C33"));
 //                    btnSignin.setEnabled(false);
                 }
+            }
+        });
+    }
+
+    public void showGenderDialog(EditText target){
+        dGender = new Dialog(SignUpActivity.this);       // Dialog 초기화
+        dGender.requestWindowFeature(Window.FEATURE_NO_TITLE); // 타이틀 제거
+        dGender.setContentView(R.layout.gender_dialog);
+
+        EditText edtText = target;
+        String[] s = {"여자", "남자", "기타"};
+
+        dGender.show();
+        dGender.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        NumberPicker gPicker = dGender.findViewById(R.id.gPicker);
+
+        gPicker.setMinValue(0);
+        gPicker.setMaxValue(2);
+
+        gPicker.setDisplayedValues(s);
+
+        Button btnComp = dGender.findViewById(R.id.btnComp);
+        btnComp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edtText.setText(s[gPicker.getValue()]);
+                dGender.dismiss();
             }
         });
     }

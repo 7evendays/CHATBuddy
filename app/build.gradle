@@ -4,6 +4,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file(chatbuddy.jks)
+            storePassword 'gdsc2023'
+            keyAlias '0'
+            keyPassword 'gdsc2023'
+        }
+    }
     namespace 'com.example.chatbuddy'
     compileSdk 33
 
@@ -33,7 +41,7 @@ apply plugin: 'com.google.gms.google-services'
 
 dependencies {
     // Import the BoM for the Firebase platform
-    implementation platform('com.google.firebase:firebase-bom:31.2.0')
+    implementation platform('com.google.firebase:firebase-bom:31.2.3')
     // Add the dependency for the Firebase Authentication library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-auth'
@@ -61,4 +69,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    implementation group: 'org.apache.opennlp', name: 'opennlp-tools', version: '1.9.3'
+    implementation files('libs/kkma-2.1.jar')
 }

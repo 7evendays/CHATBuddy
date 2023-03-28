@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/dialog_confirm"
+    android:padding="20dp">
+
+    <NumberPicker
+        android:id="@+id/gPicker"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+        android:selectionDividerHeight="0dp"
+        android:theme="@style/NumberPickerStyle"/>
+
+    <Button
+        android:id="@+id/btnComp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:backgroundTint="#00ABB4"
+        android:text="완료"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+
+</LinearLayout>

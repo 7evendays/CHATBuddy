@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".MindMapActivity">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/icon_back" />
+
+    <!--
+    <ImageView
+        android:id="@+id/cloudView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true" />
+    -->
+
+    <TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="당신의 응어리를 보듬어주세요."
+        android:textSize="18sp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MindMapActivity"
+        android:id="@+id/MindMapActivity" >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/task1"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+
+            android:background="@drawable/circle"
+            android:text="과제"
+            android:textSize="40sp"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/task2"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="20dp"
+
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/main_orange"
+            android:text="취업"
+            android:textSize="30sp"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/task1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/task7"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/task3"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+
+
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/text_lightGray"
+            android:text="친구"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+
+            app:layout_constraintTop_toBottomOf="@+id/task1"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/task4"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/main_orange"
+            android:text="돈"
+            android:textSize="20sp"
+
+            app:layout_constraintLeft_toRightOf="@+id/task1"
+            app:layout_constraintBottom_toTopOf="@+id/task3"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/task5"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/main_orange"
+            android:text="취업"
+            android:textSize="20sp"
+
+            app:layout_constraintLeft_toRightOf="@+id/task6"
+            app:layout_constraintTop_toBottomOf="@+id/task1"
+            app:layout_constraintRight_toLeftOf="@+id/task3"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/task6"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/main_green"
+            android:text="건강"
+            android:textSize="20sp"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/task10"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/task7"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/text_lightGray"
+            android:text="건강"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+
+            app:layout_constraintBottom_toTopOf="@+id/task1"
+            app:layout_constraintLeft_toRightOf="@+id/task8"
+            app:layout_constraintRight_toLeftOf="@+id/task9"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/task8"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+
+
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/text_lightGray"
+            android:text="친구"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+
+            app:layout_constraintTop_toBottomOf="@+id/task2"
+            app:layout_constraintRight_toLeftOf="@+id/task1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/task9"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="50dp"
+
+        android:background="@drawable/circle"
+        android:backgroundTint="@color/main_lightGray"
+        android:text="취업"
+        android:textSize="30sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/task4"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/task10"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="0dp"
+
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/main_lightGray"
+            android:text="취업"
+            android:textSize="30sp"
+
+            app:layout_constraintTop_toBottomOf="@+id/task8"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</LinearLayout>

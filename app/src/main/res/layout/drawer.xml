@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
 
     <View
         android:layout_width="0dp"
@@ -18,7 +18,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp">
+            android:layout_height="70dp"
+            android:id="@+id/drawerLayout">
 
             <ImageView
                 android:id="@+id/profile"
@@ -30,7 +31,7 @@
                 android:layout_marginLeft="20dp"/>
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/drawerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -69,14 +70,15 @@
             <LinearLayout
                 android:id="@+id/first"
                 android:layout_width="match_parent"
-                android:layout_height="60dp" >
+                android:layout_height="65dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="내가 해결해낸 것들"
+                    android:text="마음 지도"
                     android:padding="20dp"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:layout_gravity="center"/>
 
                 <View
                     android:layout_width="0dp"
@@ -96,7 +98,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.8dp"
+                android:layout_height="1dp"
                 android:background="#2F343D"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"/>
@@ -104,14 +106,15 @@
             <LinearLayout
                 android:id="@+id/second"
                 android:layout_width="match_parent"
-                android:layout_height="60dp" >
+                android:layout_height="65dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="계정관리"
                     android:padding="20dp"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:layout_gravity="center"/>
 
                 <View
                     android:layout_width="0dp"
@@ -131,7 +134,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.8dp"
+                android:layout_height="1dp"
                 android:background="#2F343D"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp" />
@@ -139,14 +142,15 @@
             <LinearLayout
                 android:id="@+id/third"
                 android:layout_width="match_parent"
-                android:layout_height="60dp" >
+                android:layout_height="65dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="문의하기"
                     android:padding="20dp"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:layout_gravity="center"/>
 
                 <View
                     android:layout_width="0dp"
@@ -166,7 +170,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.8dp"
+                android:layout_height="1dp"
                 android:background="#2F343D"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp" />

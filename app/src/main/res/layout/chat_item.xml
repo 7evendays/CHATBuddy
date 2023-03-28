@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/left_chat_view"
         android:background="@drawable/rounded_corner"
-        android:backgroundTint="@color/sub_gray"
+        android:backgroundTint="@color/main_lightGray"
         android:padding="8dp"
         android:layout_marginEnd="80dp" >
         <TextView

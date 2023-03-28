@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">chatbuddy</string>
-    <string name="web_client_id">312507382741-17g60eak7mdgetogatlg0fc6aak8i97c.apps.googleusercontent.com</string>
+    <string name="web_client_id">312507382741-amjag4t16vihocb0b9hnirio210u37vc.apps.googleusercontent.com</string>
     <string name="signOut">로그아웃</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

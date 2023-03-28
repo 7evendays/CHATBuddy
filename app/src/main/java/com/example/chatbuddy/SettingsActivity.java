@@ -1,23 +1,22 @@
 package com.example.chatbuddy;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -36,10 +35,9 @@ import com.google.firebase.firestore.auth.User;
 public class SettingsActivity extends AppCompatActivity {
 
     ImageButton btnBack;
-    LinearLayout btnSignOut;
-    LinearLayout btnLeave;
+    LinearLayout btnSignOut, btnLeave, btnPasswd;
 
-    TextView tvUID, tvDisplayName, tvEmail;
+    TextView tvPasswd, tvUID, tvDisplayName, tvEmail, tvNickName, tvBirth, tvGender;
     ImageView ivPhoto;
 
     // firebase authentication
@@ -49,7 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     // realtime database
     FirebaseDatabase database;
-    DatabaseReference myRef;
+    DatabaseReference userRef, uidRef;
     User user;
 
     AlertDialog.Builder builder;
@@ -58,17 +56,6 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
-        // 버튼
-        btnBack = findViewById(R.id.btnBack);
-        btnSignOut = findViewById(R.id.btnSignOut);
-        btnLeave = findViewById(R.id.btnLeave);
-
-        // 프로필
-        tvUID = findViewById(R.id.userId);
-        tvDisplayName = findViewById(R.id.displayName);
-        tvEmail = findViewById(R.id.userEmail);
-        ivPhoto = findViewById(R.id.userPhoto);
 
         // Firebase 앱 초기화
         FirebaseApp.initializeApp(getApplicationContext());
@@ -85,8 +72,30 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Write a message to the database
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("users");
+        userRef = database.getReference("users");
+        uidRef = userRef.child(currentUser.getUid());
 
+        // 버튼
+        btnBack = findViewById(R.id.btnBack);
+        btnSignOut = findViewById(R.id.btnSignOut);
+        btnLeave = findViewById(R.id.btnLeave);
+        btnPasswd = findViewById(R.id.btnPasswd);
+        tvPasswd = findViewById(R.id.tvPasswd);
+        setTvPasswd();
+
+        // 프로필
+        tvEmail = findViewById(R.id.userEmail);
+        /*
+        tvUID = findViewById(R.id.userId);
+        tvDisplayName = findViewById(R.id.displayName);
+
+        ivPhoto = findViewById(R.id.userPhoto);
+        tvNickName = findViewById(R.id.nickName);
+        tvBirth = findViewById(R.id.birth);
+        tvGender = findViewById(R.id.gender);
+         */
+
+        // 알림창
         builder = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert);
 
         // 뒤로가기
@@ -101,13 +110,13 @@ public class SettingsActivity extends AppCompatActivity {
         getUserData();
 
         // 로그아웃
-
         btnSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signOut();
             }
         });
+
         // 탈퇴
         btnLeave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,24 +145,70 @@ public class SettingsActivity extends AppCompatActivity {
                 alert.show();
             }
         });
+
+        // 비밀번호
+        btnPasswd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uidRef.child("password").child("on").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Boolean on = snapshot.getValue(Boolean.class);
+                        if (on.equals(true)) {
+                            uidRef.child("password").child("on").setValue(false);
+                            setTvPasswd();
+                        } else if (on.equals(false)) {
+                            uidRef.child("password").child("val").addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String password = snapshot.getValue(String.class);
+                                    if (snapshot.exists()) {
+                                        uidRef.child("password").child("on").setValue(true);
+                                        setTvPasswd();
+                                    } else {
+                                        startPasswordActivity();
+                                        setTvPasswd();
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    // 데이터베이스 액세스 중 오류 발생 시 처리 방법
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // 데이터베이스 액세스 중 오류 발생 시 처리 방법
+                    }
+                });
+            }
+        });
     }
 
     private void signOut() {
         mGoogleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN);
         // Firebase Authentication에서 로그아웃
         mAuth.signOut();
-        startFirstActivity();
+        startSignInActivity();
     }
 
     private void leave() {
+        String uid = mAuth.getCurrentUser().getUid();
+
         mAuth.getCurrentUser().delete()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+                            // 사용자 정보 파기
+                            uidRef = userRef.child(uid);
+                            uidRef.setValue(null);
+
                             Log.d("TAG", "User account deleted.");
                             Toast.makeText(getApplicationContext(), "탈퇴가 완료되었습니다.😥", Toast.LENGTH_LONG).show();
-                            startFirstActivity();
+                            startSignInActivity();
                         }
                     }
                 });
@@ -162,76 +217,90 @@ public class SettingsActivity extends AppCompatActivity {
     // 사용자 프로필 가져오기
     private void getUserData() {
         String uid, displayName, email;
-        // String nickName, birth, gender;
+        String nickName, birth, gender;
         Uri photo;
 
         if (currentUser != null) {
-            uid = currentUser.getUid();
-            displayName = currentUser.getDisplayName();
             email = currentUser.getEmail();
-            photo = currentUser.getPhotoUrl();
-
-            tvUID.setText(uid);
-            tvDisplayName.setText(displayName);
             tvEmail.setText(email);
-            Glide.with(this).load(photo).into(ivPhoto);
 
             /*
-            // Read from the database
-            myRef.child(uid).child("nickName").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
-                    String value = dataSnapshot.getValue(String.class);
-                    Log.d("TAG", "Value is: " + value);
-                    tvNickName.setText(value);
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    // Failed to read value
-                    Log.w("TAG", "Failed to read value.", error.toException());
-                }
-            });
+            uid = currentUser.getUid();
+            displayName = currentUser.getDisplayName();
+            photo = currentUser.getPhotoUrl();
+            tvUID.setText(uid);
+            tvDisplayName.setText(displayName);
+            Glide.with(this).load(photo).into(ivPhoto);
 
-            myRef.child(uid).child("birth").addValueEventListener(new ValueEventListener() {
+            uidRef = userRef.child(uid);
+            uidRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
-                    String value = dataSnapshot.getValue(String.class);
-                    Log.d("TAG", "Value is: " + value);
-                    tvBirth.setText(value);
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // uid 노드의 모든 데이터를 가져옴
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String key = snapshot.getKey(); // 하위 노드의 키값을 가져옴
+                        Object value = snapshot.getValue(); // 하위 노드의 값을 가져옴
+                        // 이곳에서 하위 노드의 키와 값을 사용하여 원하는 작업을 수행할 수 있음
+                        switch (key) {
+                            case "nickName":
+                                tvNickName.setText(value.toString());
+                                break;
+                            case "birth":
+                                tvBirth.setText(value.toString());
+                                break;
+                            case "gender":
+                                tvGender.setText(value.toString());
+                                break;
+                        }
+                    }
                 }
                 @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    // Failed to read value
-                    Log.w("TAG", "Failed to read value.", error.toException());
-                }
-            });
-
-            myRef.child(uid).child("gender").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
-                    String value = dataSnapshot.getValue(String.class);
-                    Log.d("TAG", "Value is: " + value);
-                    tvGender.setText(value);
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    // Failed to read value
-                    Log.w("TAG", "Failed to read value.", error.toException());
+                public void onCancelled(DatabaseError databaseError) {
+                    // 데이터 로드에 실패한 경우 호출됨
+                    Log.w("TAG", "loadPost:onCancelled", databaseError.toException());
                 }
             });
-             */
+            */
         }
     }
 
-    private void startFirstActivity() {
-        Intent intent = new Intent(getApplicationContext(), FirstActivity.class);
+    private void setTvPasswd() {
+        uidRef.child("password").child("on").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    Boolean on = snapshot.getValue(Boolean.class);
+                    if (on.equals(true)) {
+                        tvPasswd.setText("비밀번호 : 끄기");
+                    } else if (on.equals(false)) {
+                        tvPasswd.setText("비밀번호 : 켜기");
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // 데이터베이스 액세스 중 오류 발생 시 처리 방법
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        setTvPasswd();
+    }
+
+    private void startSignInActivity() {
+        finishAffinity();
+        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
         startActivity(intent);
-        finish();
+    }
+
+    private void startPasswordActivity() {
+        Intent intent = new Intent(getApplicationContext(), PasswordActivity.class);
+        intent.putExtra("preAct", "SettingsActivity");
+        setResult(Activity.RESULT_OK, intent);
+        startActivity(intent);
     }
 }

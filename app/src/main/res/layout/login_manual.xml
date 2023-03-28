@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="30dp"
+    android:orientation="vertical"
+    app:behavior_hideable="true"
+    app:behavior_draggable="true"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    android:background="@drawable/dialog_confirm"
+    android:backgroundTint="#1E1E1E">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="35dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="로그인에 어려움이 있나요?"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="18dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_x"
+            android:backgroundTint="@android:color/transparent"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="분명 이 소셜 서비스로 로그인 했었는데 지금은 안돼요."
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- 혹시 로그인했던 소셜 서비스의 계정을 아예 삭제했거나, 비밀번호를 변경했나요? 이 경우, 해당 소셜 서비스에서 직접 확인한 후 로그인이 가능합니다."
+        android:textColor="#929292"
+        android:textSize="12sp"
+        android:layout_marginBottom="30dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="구글 계정으로 로그인 하려는데 절차가 복잡해요."
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- 혹시 Google Workspace 계정으로 로그인을 시도하셨나요? 이 경우, Google Device Policy 앱 다운로드 및 해당 앱 로그인 후 이용이 가능합니다."
+        android:textColor="#929292"
+        android:textSize="12sp"
+        android:layout_marginBottom="30dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="그래도 문제가 해결되지 않는다면 고객센터로 이메일을 보내주세요. 편리한 이용을 위한 챗벗이 되겠습니다."
+        android:textColor="#01ABB4"
+        android:textSize="12sp"
+        android:layout_marginBottom="30dp"/>
+
+    <Button
+        android:id="@+id/btnEmail"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:text="이메일 보내기"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:background="@drawable/round_button"
+        android:backgroundTint="#292C33"
+        android:layout_gravity="center"/>
+
+</LinearLayout>
