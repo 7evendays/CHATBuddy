@@ -66,6 +66,8 @@ ChatBuddy는 정신건강 서포터로서 당신의 정신건강을 책임집니
 
 ## 어떤 기술을 사용했나요?
 
+![정보구조도-01](readme/architecture.jpg)
+
 - <i class="fab fa-android" style="color: #5d70f9;"></i> AndriodStudio
     - AndroidStudio에서 작업했어요! 프론트엔드는 Java로 작성되었답니다.
 - <i class="fas fa-fire" style="color: #5d70f9;"></i> Firebase - Authentication
@@ -121,7 +123,7 @@ ChatBuddy는 정신건강 서포터로서 당신의 정신건강을 책임집니
 
 ## Demo
 
-<iframe src="https://www.youtube.com/embed/Clnm2T3QIpY' + '" frameborder="0" allowfullscreen></iframe>
+[![thumbnail](readme/demo.png)](https://www.youtube.com/watch?v=Clnm2T3QIpY)
 
 ### Team members
 - 🧑‍💻 김정현(Jeong-Hyeon Kim) `gimj9908@gmail.com`
