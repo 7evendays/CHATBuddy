@@ -23,7 +23,7 @@ ChatBuddy는 정신건강 서포터로서 당신의 정신건강을 책임집니
 
 ### GDSC Solution Challenge란 뭔가요?
 
-> <img src="../assets/images/projects/chatBuddy/gdsc.png" alt="gdsc" style="float: left; width: 2rem; margin: 1rem"/> **GDSC SWU**는 Google Developers가 후원하는 서울여자대학교 학생 개발자들을 위한 대학생 커뮤니티 그룹입니다.
+> <img src="readme/gdsc.png" alt="gdsc" style="float: left; width: 2rem; margin: 1rem"/> **GDSC SWU**는 Google Developers가 후원하는 서울여자대학교 학생 개발자들을 위한 대학생 커뮤니티 그룹입니다.
 > 현실에서 마주하는 사회 문제의 해결 방안을 제시함으로써 **사회에 긍정적인 영향을 미치는 개발자 커뮤니티**가 GDSC SWU의 비전입니다.
 > 
 > 그리고 GDSC 솔루션 챌린지는 UN의 17가지 지속 가능한 개발 목표는 중 하나를 선택하여 해결하는 글로벌 규모의 컨테스트입니다!🤩
