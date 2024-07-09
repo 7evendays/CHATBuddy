@@ -1,46 +1,5 @@
 #  👀 2023 Solution Challenge - CHATBuddy 챗벗
 
-
-
-## Problem
-Due to the prolonged COVID-19, Korean youth mental health indicators have deteriorated. The problem with many people due to COVID-19 is that they are too often exposed to a society in which negative emotions such as anger, resentment and conflicts of hatred are prominent. Even if the current COVID-19 is stabilized, it is difficult to change daily life because it is fixed in an old life. <br/><br/>
-  → Mental health facilities and manpower shortages for the vulnerable in the corona disaster <br/>
-  → Koreans have a high psychological rejection of mental health services <br/>
-  → financial burden on the price of mental health services <br/>
-
-
-
-
-## About CHATBuddy
-### _"Buddy service for youth with depression"_ <br/>
-As a mental health supporter, CHATBuddy takes care of your mental health. When you want to feel free to share your situation or feelings with someone, please visit CHATBuddy. Through ordinary daily conversations, you can identify the cause of anxiety and receive daily solutions.<br/>
-
-*Don't worry alone anymore!😀* <br/><br/>
-<img src = "https://user-images.githubusercontent.com/68999618/227910711-3289e617-a6c0-4b87-b770-a48b2e3aaf61.png" width="30%" height="30%">
-
-## UN-sustainable-development-goals
-   3. Good Health and Well-Being <br/>
-    : Achieve universal health coverage, including financial risk protection, access to quality essential health-care services and access to safe, effective, quality and affordable essential medicines and vaccines for all.
-    
-    
-    
-## Architecture
-![정보구조도-01](https://user-images.githubusercontent.com/68415422/229152123-844c2c1f-1f41-4fda-856a-26a6716cf587.jpg)
-
-## Techs
-  * Cognitive function, emotional state measurement and emotional solution provision
-  * Suicide prediction and health service linkage (simple information_link)
-
-## Demo
-[![thumbnail](https://user-images.githubusercontent.com/68415422/229873666-0d2a5e4a-936d-493d-a1be-5e50cf1ce293.JPG)](https://www.youtube.com/watch?v=Clnm2T3QIpY)
-
-## Team members
-🧑‍💻 김정현(Jeong-Hyeon Kim) <br/>
-🧑‍💻 이정인(Jeong-In Lee) <br/>
-🧑‍💻 조예원(Ye-won Jo) <br/>
-🧑‍💻 최혜림(Hye-lim Choi) <br/>
-
-
 <button onclick="window.open('https://github.com/GDSC-SWU/2023-ChatBuddy-SolutionChallenge', '_blank')" style="font-weight: bold; font-size: 1.2rem; color: #262626; background: none; border: none; cursor: pointer; margin-left: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
     <i class="fab fa-github"></i>
     <span class="button-text">Github</span>
@@ -49,6 +8,7 @@ As a mental health supporter, CHATBuddy takes care of your mental health. When y
 
 
 # CHATBuddy란?
+
 UN의 17가지 지속 가능한 개발 목표 중
 - Good Health & Wellbeing
 - Peace, Justice & Strong Institutions
@@ -62,6 +22,7 @@ ChatBuddy는 정신건강 서포터로서 당신의 정신건강을 책임집니
 청년들이 자신의 감정을 솔직하게 털어놓고 치유할 수 있는 공간입니다. 언제 어디서든 무료로 이용할 수 있어요. 저희 앱의 최종 목적은 청년들의 정신 건강을 지원하고, 감정 조절 능력을 향상시키는 데 도움을 주는 것입니다.
 
 <img src="../assets/images/projects/chatBuddy/logo.png" style="float: right; width: 20%; left-margin: 2rem;">
+
 ### 왜 ChatBuddy인가요?
 
 'Chat'은 대화를 의미하며, 'Buddy'는 친구같은 AI를 의미합니다. 그리고 'Chat 대화'로 치유의 'Bud 싹🌱'을 틔우겠다는 의미를 담아 팀 이름을 ChatBud으로 짓게 되었습니다.😊
@@ -169,6 +130,3 @@ ChatBuddy는 정신건강 서포터로서 당신의 정신건강을 책임집니
 - 🧑‍💻 이정인(Jeong-In Lee) `leejungin0827@gmail.com`
 - 🧑‍💻 조예원(Ye-won Jo) `joyewon04@gmail.com`
 - 🧑‍💻 최혜림(Hye-lim Choi) `gangela1113@gmail.com`
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
