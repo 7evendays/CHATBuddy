@@ -1,10 +1,6 @@
 #  👀 2023 Solution Challenge - CHATBuddy 챗벗
 
-<button onclick="window.open('https://github.com/GDSC-SWU/2023-ChatBuddy-SolutionChallenge', '_blank')" style="font-weight: bold; font-size: 1.2rem; color: #262626; background: none; border: none; cursor: pointer; margin-left: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-    <i class="fab fa-github"></i>
-    <span class="button-text">Github</span>
-</button>
-| 📅 2023.01.16 ~ 2023.03.31
+📅 2023.01.16 ~ 2023.03.31
 
 
 # CHATBuddy란?
@@ -20,8 +16,6 @@ ChatBuddy는 정신건강 서포터로서 당신의 정신건강을 책임집니
 더이상 혼자 고민하지 마세요!😀
 
 청년들이 자신의 감정을 솔직하게 털어놓고 치유할 수 있는 공간입니다. 언제 어디서든 무료로 이용할 수 있어요. 저희 앱의 최종 목적은 청년들의 정신 건강을 지원하고, 감정 조절 능력을 향상시키는 데 도움을 주는 것입니다.
-
-<img src="../assets/images/projects/chatBuddy/logo.png" style="float: right; width: 20%; left-margin: 2rem;">
 
 ### 왜 ChatBuddy인가요?
 
