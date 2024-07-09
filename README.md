@@ -121,8 +121,7 @@ ChatBuddy는 정신건강 서포터로서 당신의 정신건강을 책임집니
 
 ## Demo
 
-<div class="hyde youtube" id="Clnm2T3QIpY"></div>
-
+<iframe src="https://www.youtube.com/embed/Clnm2T3QIpY' + '" frameborder="0" allowfullscreen></iframe>
 
 ### Team members
 - 🧑‍💻 김정현(Jeong-Hyeon Kim) `gimj9908@gmail.com`
