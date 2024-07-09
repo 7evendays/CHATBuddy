@@ -80,17 +80,17 @@ ChatBuddy는 정신건강 서포터로서 당신의 정신건강을 책임집니
 
 ### Chu-ddy 츄디
 
-<img src="../assets/images/projects/chatBuddy/chuddy.png" alt="츄디" style="float: left; width: 5rem; margin-right: 1rem"/>
+<img src="readme/chuddy.png" alt="츄디" style="float: left; width: 5rem; margin-right: 1rem"/>
 
 안녕하세요! 츄디예요.😶 츄디는 여러분들을 위한 `걱정인형`이에요. 불안함과 걱정 때문에 밤새 뒤척인 적이 있으신가요? `걱정인형`은 잠들기 전 걱정을 들려주고 베개 밑에 두면 이 인형이 걱정을 가져가 밤새 뒤척이지 않고 잘 수 있다는 과테말라의 전설에서 유래했습니다. 츄디가 여러분의 `걱정인형`이 되어 모든 불안과 우울을 가져가 줄게요! 여러분의 생각과 고민들을 들려주세요.
 
 ### 우리의 색
 
-<img src="../assets/images/projects/chatBuddy/color1.png" alt="브랜드 컬러" style="float: left; width: 5rem; margin-right: 1rem"/> **#01ABB4**
+<img src="readme/color1.png" alt="브랜드 컬러" style="float: left; width: 5rem; margin-right: 1rem"/> **#01ABB4**
 
-<img src="../assets/images/projects/chatBuddy/color2.png" alt="브랜드 컬러" style="float: left; width: 5rem; margin-right: 1rem"/> **#1E1E1E**
+<img src="readme/color2.png" alt="브랜드 컬러" style="float: left; width: 5rem; margin-right: 1rem"/> **#1E1E1E**
 
-<img src="../assets/images/projects/chatBuddy/color3.png" alt="브랜드 컬러" style="float: left; width: 5rem; margin-right: 1rem"/> **#292C33**
+<img src="readme/color3.png" alt="브랜드 컬러" style="float: left; width: 5rem; margin-right: 1rem"/> **#292C33**
 
 <br><br>
 
@@ -98,21 +98,21 @@ ChatBuddy는 정신건강 서포터로서 당신의 정신건강을 책임집니
 
 **회원가입/로그인**
 
-| <img src="../assets/images/projects/chatBuddy/ex1.png" alt="데모"/> | <img src="../assets/images/projects/chatBuddy/ex2.png" alt="데모"/> | <img src="../assets/images/projects/chatBuddy/ex3.png" alt="데모"/> |
-| <img src="../assets/images/projects/chatBuddy/ex4.png" alt="데모"/> | <img src="../assets/images/projects/chatBuddy/ex5.png" alt="데모"/> | <img src="../assets/images/projects/chatBuddy/ex6.png" alt="데모"/> |
+| <img src="readme/ex1.png" alt="데모"/> | <img src="readme/ex2.png" alt="데모"/> | <img src="readme/ex3.png" alt="데모"/> |
+| <img src="readme/ex4.png" alt="데모"/> | <img src="readme/ex5.png" alt="데모"/> | <img src="readme/ex6.png" alt="데모"/> |
 
 **채팅**
 
-| <img src="../assets/images/projects/chatBuddy/ex8.png" alt="데모"/> | <img src="../assets/images/projects/chatBuddy/ex9.png" alt="데모"/> | <img src="../assets/images/projects/chatBuddy/ex10.png" alt="데모"/> |
+| <img src="readme/ex8.png" alt="데모"/> | <img src="readme/ex9.png" alt="데모"/> | <img src="readme/ex10.png" alt="데모"/> |
 
 **솔루션**
 
-| <img src="../assets/images/projects/chatBuddy/ex11.png" alt="데모"/> | <img src="../assets/images/projects/chatBuddy/ex12.png" alt="데모"/> | <img src="../assets/images/projects/chatBuddy/ex13.png" alt="데모"/> |
-| <img src="../assets/images/projects/chatBuddy/ex14.png" alt="데모"/> | <img src="../assets/images/projects/chatBuddy/ex15.png" alt="데모"/> | <img src="../assets/images/projects/chatBuddy/ex16.png" alt="데모"/> |
+| <img src="readme/ex11.png" alt="데모"/> | <img src="readme/ex12.png" alt="데모"/> | <img src="readme/ex13.png" alt="데모"/> |
+| <img src="readme/ex14.png" alt="데모"/> | <img src="readme/ex15.png" alt="데모"/> | <img src="readme/ex16.png" alt="데모"/> |
 
 **마이 페이지**
 
-| <img src="../assets/images/projects/chatBuddy/ex17.png" alt="데모"/> | <img src="../assets/images/projects/chatBuddy/ex18.png" alt="데모"/> | <img src="../assets/images/projects/chatBuddy/ex19.png" alt="데모"/> |
+| <img src="readme/ex17.png" alt="데모"/> | <img src="readme/ex18.png" alt="데모"/> | <img src="readme/ex19.png" alt="데모"/> |
 
 ## Demo
 
