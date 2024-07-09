@@ -29,7 +29,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.auth.User;
 
 public class SignInActivity extends AppCompatActivity {
     LinearLayout btn_SignIn;
@@ -44,7 +43,7 @@ public class SignInActivity extends AppCompatActivity {
     // realtime database
     FirebaseDatabase database;
     DatabaseReference userRef;
-    User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -161,32 +160,7 @@ public class SignInActivity extends AppCompatActivity {
                             // 로그인 성공 시
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser firebaseUser = task.getResult().getUser();
-
-                            String uid = firebaseUser.getUid();
-                            userRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    if (dataSnapshot.exists()) {
-                                        // uid가 존재하는 경우
-                                        if (firebaseUser != null) {
-                                            startMainActivity();
-                                            Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
-                                        }
-                                    } else {
-                                        // uid가 존재하지 않는 경우
-                                        Toast.makeText(getApplicationContext(), "회원가입이 필요합니다.", Toast.LENGTH_SHORT).show();
-                                        startSignUpActivity();
-                                    }
-                                }
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-                                    // 쿼리가 취소된 경우
-                                    Toast.makeText(getApplicationContext(), "오류 발생", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-
-
-
+                            checkUserInDatabase(firebaseUser);
                         } else {
                             // 로그인 실패 시
                             Log.w("TAG", "signInWithCredential:failure", task.getException());
@@ -208,7 +182,31 @@ public class SignInActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void checkUserInDatabase(FirebaseUser firebaseUser) {
+        String uid = firebaseUser.getUid();
+        userRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // uid가 존재하는 경우
+                    if (firebaseUser != null) {
+                        startMainActivity();
+                        Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    // uid가 존재하지 않는 경우
+                    Toast.makeText(getApplicationContext(), "회원가입이 필요합니다.", Toast.LENGTH_SHORT).show();
+                    startSignUpActivity();
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // 쿼리가 취소된 경우
+                Toast.makeText(getApplicationContext(), "오류 발생", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 
     /*

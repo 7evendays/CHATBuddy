@@ -6,7 +6,7 @@ plugins {
 android {
     signingConfigs {
         release {
-            storeFile file(chatbuddy.jks)
+            storeFile file("chatbuddy.jks")
             storePassword 'gdsc2023'
             keyAlias '0'
             keyPassword 'gdsc2023'
