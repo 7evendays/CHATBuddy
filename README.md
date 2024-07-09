@@ -98,8 +98,10 @@ ChatBuddy는 정신건강 서포터로서 당신의 정신건강을 책임집니
 
 **회원가입/로그인**
 
-| <img src="readme/ex1.png" alt="데모"/> | <img src="readme/ex2.png" alt="데모"/> | <img src="readme/ex3.png" alt="데모"/> |
-| <img src="readme/ex4.png" alt="데모"/> | <img src="readme/ex5.png" alt="데모"/> | <img src="readme/ex6.png" alt="데모"/> |
+| <img src="readme/ex1.png" alt="데모" width="200"/> | <img src="readme/ex2.png" alt="데모" width="200"/> | <img src="readme/ex3.png" alt="데모" width="200"/> |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| <img src="readme/ex4.png" alt="데모" width="200"/> | <img src="readme/ex5.png" alt="데모" width="200"/> | <img src="readme/ex6.png" alt="데모" width="200"/> |
+
 
 **채팅**
 
