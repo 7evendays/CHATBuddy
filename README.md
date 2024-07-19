@@ -1,7 +1,8 @@
 #  👀 2023 Solution Challenge - CHATBuddy 챗벗
 
-📅 2023.01.16 ~ 2023.03.31
+<img src="readme/title.png" width="100%">
 
+📅 2023.01.16 ~ 2023.03.31
 
 # CHATBuddy란?
 
